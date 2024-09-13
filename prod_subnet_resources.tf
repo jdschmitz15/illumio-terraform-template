@@ -7,7 +7,6 @@ resource "aws_instance" "pos-web01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodwebsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.21"
   tags = {
     Name  = "pos-web01-prd"
@@ -37,7 +36,6 @@ resource "aws_instance" "pos-proc01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodprocsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.22"
   tags = {
     Name  = "pos-proc01-prd"
@@ -67,7 +65,6 @@ resource "aws_instance" "pos-db01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.proddbsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.23"
   tags = {
     Name  = "pos-db01-prd"
@@ -100,7 +97,6 @@ resource "aws_instance" "hr-web01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodwebsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.31"
   tags = {
     Name  = "hr-web01-prd"
@@ -129,7 +125,6 @@ resource "aws_instance" "hr-proc01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodprocsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.32"
   tags = {
     Name  = "hr-proc01-prd"
@@ -159,7 +154,6 @@ resource "aws_instance" "hr-db01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.proddbsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.33"
   tags = {
     Name  = "hr-db01-prd"
@@ -192,7 +186,6 @@ resource "aws_instance" "crm-web01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodwebsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.41"
   tags = {
     Name  = "crm-web01-prd"
@@ -222,7 +215,6 @@ resource "aws_instance" "crm-proc01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.prodprocsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.42"
   tags = {
     Name  = "crm-proc01-prd"
@@ -252,7 +244,6 @@ resource "aws_instance" "crm-db01-prd" {
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
   vpc_security_group_ids = [aws_security_group.proddbsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.2.43"
   tags = {
     Name  = "crm-db01-prd"

@@ -7,7 +7,6 @@ resource "aws_instance" "pos-web01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devwebsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.21"
   tags = {
     Name  = "pos-web01-dev"
@@ -36,7 +35,6 @@ resource "aws_instance" "pos-proc01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devprocsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.22"
   tags = {
     Name  = "pos-web01-dev"
@@ -66,7 +64,6 @@ resource "aws_instance" "pos-db01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devdbsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.23"
   tags = {
     Name  = "pos-db01-dev"
@@ -100,7 +97,6 @@ resource "aws_instance" "hr-web01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devwebsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.31"
   tags = {
     Name  = "hr-web01-dev"
@@ -130,7 +126,6 @@ resource "aws_instance" "hr-proc01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devprocsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.32"
   tags = {
     Name  = "hr-proc01-dev"
@@ -160,7 +155,6 @@ resource "aws_instance" "hr-db01-dev" {
   availability_zone      = aws_subnet.dev_subnet.availability_zone
   subnet_id              = aws_subnet.dev_subnet.id
   vpc_security_group_ids = [aws_security_group.devdbsg.id]
-  key_name = "CloudsecureFreeTrial"
   private_ip = "10.0.3.33"
   tags = {
     Name  = "hr-db01-dev"
