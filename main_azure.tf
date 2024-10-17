@@ -18,11 +18,6 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = var.SUBSCRIPTION_ID
-  client_id     = var.CLIENT_ID      # Azure AD Application Client ID
-  client_secret = var.CLIENT_SECRET  # Azure AD Application Client Secret
-  tenant_id     = var.TENANT_ID     # Azure AD Tenant ID
-  use_cli       = false
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -32,24 +27,4 @@ resource "azurerm_resource_group" "rg" {
   tags = {
     environment = "Production"
   }
-}
-
-variable "CLIENT_ID" {
-  description = "Client ID"
-  type        = string
-}
-
-variable "CLIENT_SECRET" {
-  description = "Client secret"
-  type        = string
-}
-
-variable "TENANT_ID" {
-  description = "Tenant ID"
-  type        = string
-}
-
-variable "SUBSCRIPTION_ID" {
-  description = "Subscription ID"
-  type        = string
 }
