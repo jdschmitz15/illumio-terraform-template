@@ -1,4 +1,6 @@
 
+
+
 # Generate random text for a unique storage account name
 resource "random_id" "random_id" {
   keepers = {
@@ -137,6 +139,13 @@ resource "azurerm_linux_virtual_machine" "ticketing-jump01" {
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
   }
+  tags = {
+    role = "jump"
+    dept = "222"
+    app = "ticketing"
+    env = "prod"
+    compliance = "pci"
+  }
 }
 resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-jump01" {
   network_watcher_name = azurerm_network_watcher.NetWatcher.name
@@ -213,6 +222,13 @@ resource "azurerm_linux_virtual_machine" "ticketing-web01-prod" {
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
   }
+  tags = {
+    role = "web"
+    dept = "222"
+    app = "ticketing"
+    env = "prod"
+    compliance = "pci"
+  }
 }
 resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-web01-prod" {
   network_watcher_name = azurerm_network_watcher.NetWatcher.name
@@ -286,6 +302,13 @@ resource "azurerm_linux_virtual_machine" "ticketing-proc01-prod" {
 
   boot_diagnostics {
     storage_account_uri = azurerm_storage_account.my_storage_account.primary_blob_endpoint
+  }
+  tags = {
+    role = "proc"
+    dept = "222"
+    app = "ticketing"
+    env = "prod"
+    compliance = "pci"
   }
 }
 resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-proc01-prod" {
