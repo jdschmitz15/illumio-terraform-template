@@ -74,6 +74,7 @@ resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-web01-dev" {
   name                 = "nsg-flow-logs-ticketing-web01-dev"
 
   network_security_group_id = azurerm_network_security_group.nsg-ticketing-web01-dev.id
+  //target_resource_id = azurerm_network_security_group.nsg-ticketing-web01-dev.id
   storage_account_id        = azurerm_storage_account.flowlogs.id
   enabled                   = true
   version = 2
@@ -95,6 +96,8 @@ resource "azurerm_network_interface" "nic-A" {
         private_ip_address = "192.168.1.6"
 
   }
+
+depends_on = [ azurerm_network_watcher.NetWatcher ]
 }
 resource "azurerm_network_interface_security_group_association" "assocA" {
   network_interface_id      = azurerm_network_interface.nic-A.id
@@ -155,6 +158,7 @@ resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-jump01" {
   name                 = "nsg-flow-logs-ticketing-jump01"
 
   network_security_group_id = azurerm_network_security_group.nsg-ticketing-jump01.id
+  //target_resource_id = azurerm_network_security_group.nsg-ticketing-jump01.id
   storage_account_id        = azurerm_storage_account.flowlogs.id
   enabled                   = true
   version = 2
@@ -163,6 +167,8 @@ resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-jump01" {
     enabled = true
     days    = 1
   }
+
+  depends_on = [ azurerm_network_watcher.NetWatcher ]
 }
 resource "azurerm_network_interface" "nic-C" {
   name                = "nic-C"
@@ -237,7 +243,9 @@ resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-web01-prod" {
   //resource_group_name = "NetworkWatcherRG"
   name                 = "nsg-flow-logs-ticketing-web01-prod"
 
+  
   network_security_group_id = azurerm_network_security_group.nsg-ticketing-web01-prod.id
+  //target_resource_id = azurerm_network_security_group.nsg-ticketing-web01-prod.id
   storage_account_id        = azurerm_storage_account.flowlogs.id
   enabled                   = true
   version = 2
@@ -258,6 +266,8 @@ resource "azurerm_network_interface" "nic-B" {
     private_ip_address_allocation = "Static"
     private_ip_address = "192.168.2.6"
   }
+
+  depends_on = [ azurerm_network_watcher.NetWatcher ]
 }
 
 # Connect the security group to the network interface
@@ -317,6 +327,7 @@ resource "azurerm_network_watcher_flow_log" "nw_flowlogs_ticketing-proc01-prod" 
   name                 = "nsg-flow-logs-ticketing-proc01-prod"
 
   network_security_group_id = azurerm_network_security_group.nsg-ticketing-proc01-prod.id
+  //target_resource_id  = azurerm_network_security_group.nsg-ticketing-proc01-prod.id
   storage_account_id        = azurerm_storage_account.flowlogs.id
   enabled                   = true
   version = 2
@@ -337,6 +348,8 @@ resource "azurerm_network_interface" "nic-D" {
     private_ip_address_allocation = "Static"
     private_ip_address = "192.168.2.7"
   }
+
+  depends_on = [ azurerm_network_watcher.NetWatcher ]
 }
 
 # Connect the security group to the network interface

@@ -2,7 +2,7 @@
 # -----Create Point-of-sale Prod app----------
 # --------------------------------------------
 resource "aws_instance" "pos-web01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -31,7 +31,7 @@ resource "aws_instance" "pos-web01-prd" {
 }
 
 resource "aws_instance" "pos-proc01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -60,7 +60,7 @@ resource "aws_instance" "pos-proc01-prd" {
 }
 
 resource "aws_instance" "pos-db01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -92,7 +92,7 @@ resource "aws_instance" "pos-db01-prd" {
 # --------------------------------------------
 
 resource "aws_instance" "hr-web01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -120,7 +120,7 @@ resource "aws_instance" "hr-web01-prd" {
 }
 
 resource "aws_instance" "hr-proc01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -149,7 +149,7 @@ resource "aws_instance" "hr-proc01-prd" {
 }
 
 resource "aws_instance" "hr-db01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -181,7 +181,7 @@ resource "aws_instance" "hr-db01-prd" {
 # --------------------------------------------
 
 resource "aws_instance" "crm-web01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -210,7 +210,7 @@ resource "aws_instance" "crm-web01-prd" {
 }
 
 resource "aws_instance" "crm-proc01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id
@@ -239,7 +239,7 @@ resource "aws_instance" "crm-proc01-prd" {
 }
 
 resource "aws_instance" "crm-db01-prd" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.prod_subnet.availability_zone
   subnet_id              = aws_subnet.prod_subnet.id

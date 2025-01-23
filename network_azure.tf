@@ -2,13 +2,13 @@
 # Create virtual network
 resource "azurerm_virtual_network" "vnetA" {
   name                = "vnetA"
-  address_space       = ["192.168.1.0/24"]
+  address_space       = [var.azure_vnetA_cidr]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 resource "azurerm_virtual_network" "vnetB" {
   name                = "vnetB"
-  address_space       = ["192.168.2.0/24"]
+  address_space       = [var.azure_vnetB_cidr]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -29,13 +29,13 @@ resource "azurerm_subnet" "subnetA" {
   name                 = "subnetA"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnetA.name
-  address_prefixes     = ["192.168.1.0/27"]
+  address_prefixes     = [cidrsubnet(var.azure_vnetA_cidr, 3, 0)]
 }
 resource "azurerm_subnet" "subnetB" {
   name                 = "subnetB"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnetB.name
-  address_prefixes     = ["192.168.2.0/27"]
+  address_prefixes     = [cidrsubnet(var.azure_vnetB_cidr, 3, 0)]
 }
 
 

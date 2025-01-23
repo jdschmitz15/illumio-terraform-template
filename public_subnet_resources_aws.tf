@@ -1,6 +1,6 @@
 #Create Jumpbox on Public Subnet
 resource "aws_instance" "jumphost01" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.public_subnet.availability_zone
   subnet_id              = aws_subnet.public_subnet.id

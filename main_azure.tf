@@ -22,9 +22,26 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "testdrive"
-  location = "West US"
+  location = var.azure_location
 
   tags = {
     environment = "Production"
   }
+}
+variable "azure_location" {
+  description = "Azure region"
+  type        = string
+  default     = "eastus"
+}
+
+variable "azure_vnetA_cidr" {
+  description = "Azure VNet1 CIDR"
+  type        = string
+  default     = "192.168.1.0/24"
+}
+
+variable "azure_vnetB_cidr" {
+  description = "Azure VNet2 CIDR"
+  type        = string
+  default     = "192.168.2.0/24"
 }

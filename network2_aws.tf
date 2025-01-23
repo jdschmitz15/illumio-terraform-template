@@ -1,6 +1,6 @@
 # VPC1
 resource "aws_vpc" "vpc2" {
-  cidr_block = "10.10.0.0/16"
+  cidr_block = var.aws_vpc2_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
@@ -11,8 +11,8 @@ resource "aws_vpc" "vpc2" {
 # Staging Subnet VPC2 - For Jumphost
 resource "aws_subnet" "staging_subnet" {
   vpc_id            = aws_vpc.vpc2.id
-  cidr_block        = "10.10.4.0/24"
-  availability_zone = "us-east-1a" # Specify your availability zone
+  cidr_block        =cidrsubnet(var.aws_vpc2_cidr, 8, 4 )
+  availability_zone = var.subnet_availability_zone # Specify your availability zone
 
   tags = {
     Name = "Staging-Subnet"
@@ -48,6 +48,6 @@ resource "aws_route_table_association" "staging_association" {
 # Create a Route for VPC peering
 resource "aws_route" "vpc2_vpc1_route" {
   route_table_id         = aws_route_table.staging_rt.id
-  destination_cidr_block = "10.0.0.0/16"
+  destination_cidr_block = var.aws_vpc1_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc1-to-vpc2-peering.id
 }

@@ -1,6 +1,6 @@
 # VPC1
 resource "aws_vpc" "vpc1" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.aws_vpc1_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
@@ -22,7 +22,7 @@ resource "aws_internet_gateway" "igw" {
 # Public Subnet VPC1 - For Jumphost
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.vpc1.id
-  cidr_block        = "10.0.1.0/24"
+  cidr_block        = cidrsubnet(var.aws_vpc1_cidr, 8, 1)
   map_public_ip_on_launch = true
   availability_zone = var.subnet_availability_zone # Specify your availability zone
 
@@ -34,7 +34,7 @@ resource "aws_subnet" "public_subnet" {
 # Prod Subnet - private subnet
 resource "aws_subnet" "prod_subnet" {
   vpc_id            = aws_vpc.vpc1.id
-  cidr_block        = "10.0.2.0/24"
+  cidr_block        = cidrsubnet(var.aws_vpc1_cidr, 8, 2)
   availability_zone = var.subnet_availability_zone
 
   tags = {
@@ -45,7 +45,7 @@ resource "aws_subnet" "prod_subnet" {
 # Dev Subnet - private subnet
 resource "aws_subnet" "dev_subnet" {
   vpc_id            = aws_vpc.vpc1.id
-  cidr_block        = "10.0.3.0/24"
+  cidr_block        = cidrsubnet(var.aws_vpc1_cidr, 8, 3)
   availability_zone = var.subnet_availability_zone
 
   tags = {
@@ -78,7 +78,7 @@ resource "aws_route" "public_route" {
 # Create a Route for Staging peering
 resource "aws_route" "public_to_staging_route" {
   route_table_id         = aws_route_table.public_rt.id
-  destination_cidr_block = "10.10.0.0/16"
+  destination_cidr_block = var.aws_vpc2_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc1-to-vpc2-peering.id
 }
 
@@ -116,7 +116,7 @@ resource "aws_route" "private_route" {
 # Create a Route for Staging peering in the Private Route tab;e
 resource "aws_route" "private_to_staging_route" {
   route_table_id         = aws_route_table.private_rt.id
-  destination_cidr_block = "10.10.0.0/16"
+  destination_cidr_block = var.aws_vpc2_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc1-to-vpc2-peering.id
 }
 

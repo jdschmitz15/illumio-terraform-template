@@ -3,7 +3,7 @@
 # --------------------------------------------
 
 resource "aws_instance" "crm-web01-stg" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.staging_subnet.availability_zone
   subnet_id              = aws_subnet.staging_subnet.id
@@ -32,7 +32,7 @@ resource "aws_instance" "crm-web01-stg" {
 }
 
 resource "aws_instance" "crm-proc01-stg" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.staging_subnet.availability_zone
   subnet_id              = aws_subnet.staging_subnet.id
@@ -61,7 +61,7 @@ resource "aws_instance" "crm-proc01-stg" {
 }
 
 resource "aws_instance" "crm-db01-stg" {
-  ami                    = var.instance_ami
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   availability_zone      = aws_subnet.staging_subnet.availability_zone
   subnet_id              = aws_subnet.staging_subnet.id

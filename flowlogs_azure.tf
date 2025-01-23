@@ -1,8 +1,13 @@
 
 resource "azurerm_network_watcher" "NetWatcher" {
-  name                = "NetworkWatcher_westus"
+  name                = "NetworkWatcher_${var.azure_location}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  # lifecycle {
+
+  #   ignore_changes = [ name, location ]
+
+  # }
 }
 
 resource "random_string" "random" {
