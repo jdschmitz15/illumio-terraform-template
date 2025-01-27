@@ -38,18 +38,18 @@ resource "aws_vpn_gateway" "vpn" {
   
 }
 
-resource "aws_vpn_connection" "vpn" {
-  vpn_gateway_id      = aws_vpn_gateway.vpn.id
-    customer_gateway_id = aws_customer_gateway.vpn.id
-    type               = "ipsec.1"
-  static_routes_only = true
-  tunnel1_preshared_key = var.vpn_shared_key
+  resource "aws_vpn_connection" "vpn" {
+    vpn_gateway_id      = aws_vpn_gateway.vpn.id
+      customer_gateway_id = aws_customer_gateway.vpn.id
+      type               = "ipsec.1"
+    static_routes_only = true
+    tunnel1_preshared_key = var.vpn_shared_key
 
-  tags = {
-    Name = "azure-vpn-connection"
+    tags = {
+      Name = "azure-vpn-connection"
+    }
+    //depends_on = [aws_vpn_gateway.vpn,aws_customer_gateway.vpn]
   }
-  //depends_on = [aws_vpn_gateway.vpn,aws_customer_gateway.vpn]
-}
 
 resource "aws_vpn_connection_route" "azure_VNetA" {
   destination_cidr_block = var.azure_vnetA_cidr
